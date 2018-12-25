@@ -21,6 +21,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 # Use Stock Quote
 gem 'stock_quote'
+# Use Font Awesome Icons
+gem 'font-awesome-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
