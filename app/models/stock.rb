@@ -10,4 +10,8 @@ class Stock < ApplicationRecord
       return nil
     end
   end
+
+  def self.find_by_ticker(ticker)
+    where(ticker: ticker).first
+  end
 end

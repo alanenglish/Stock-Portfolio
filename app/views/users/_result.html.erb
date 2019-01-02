@@ -1,12 +1,25 @@
-<div class="results-block">
-  <%= bootstrap_flash %>
-</div>
+<% if params[:action] == 'search' %>
+  <div class="results-block">
+    <%= bootstrap_flash %>
+  </div>
+<% end %>
 
 <% if @stock %>
   <div class="well results-block">
     <strong>Company: </strong><%= @stock.company %>
     <strong>Symbol: </strong><%= @stock.ticker %>
     <strong>Price: </strong><%= @stock.last_price %>
-    <%= link_to "Add to my Portfolio", user_stocks_path(user: current_user, ticker: @stock.ticker), class: "btn btn-xs btn-success", method: :post %>
+    <% if current_user.can_add_stock?(@stock.ticker) %>
+      <%= link_to "Add to my Portfolio", user_stocks_path(user: current_user, ticker: @stock.ticker), class: "btn btn-xs btn-success", method: :post %>
+    <% else %>
+      <span class="label label-default">
+        <% if !current_user.under_stock_limit? %>
+          Portfolio size limit has been reached.
+        <% end %>
+        <% if current_user.stock_already_added?(@stock.ticker) %>
+          Stock already exists in your Portfolio.
+        <% end %>
+      </span>
+    <% end %>
   </div>
 <% end %>
