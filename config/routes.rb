@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get '/portfolio' => 'users#portfolio'
   get '/search_stocks' => 'stocks#search'
-  resources :user_stocks, only: [:create]
+  resources :user_stocks, only: [:create, :destroy]
 end
