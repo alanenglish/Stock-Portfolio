@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get '/search_stocks' => 'stocks#search'
   get '/friends' => 'users#friends'
   get '/search_friends' => 'users#search'
+  post '/add_friend' => 'users#add_friend'
 end

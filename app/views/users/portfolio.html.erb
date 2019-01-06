@@ -21,4 +21,6 @@
   <%= render 'result' %>
 </div>
 
-<%= render 'stocks/list' %>
+<% if @user.stocks.size > 0 %>
+  <%= render 'stocks/list' %>
+<% end %>
